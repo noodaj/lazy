@@ -3,12 +3,10 @@ return {
   keys = {
     { "<leader>,", enabled = false },
     { "<leader>ff", enabled = false },
-    { "<leader>`", LazyVim.telescope("files"), desc = "Find files" },
+    { "<leader>`", LazyVim.telescope("files", { cwd = false }), desc = "Find files" },
     { "<leader>tr", "<cmd>Telescope resume<cr>", desc = "Resume search" },
     { "<leader>/", LazyVim.telescope("live_grep"), desc = "Grep (Root Dir)" },
     { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-    { "<leader>fc", LazyVim.telescope.config_files(), desc = "Find Config File" },
-    { "<leader>ff", LazyVim.telescope("files"), desc = "Find Files (Root Dir)" },
     { "<leader>fF", LazyVim.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
     { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Find Files (git-files)" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
@@ -17,7 +15,6 @@ return {
     { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "Commits" },
     { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "Status" },
     -- search
-    { '<leader>s"', "<cmd>Telescope registers<cr>", desc = "Registers" },
     { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
     { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
     { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
@@ -56,5 +53,62 @@ return {
       end,
       desc = "Goto Symbol (Workspace)",
     },
+    opts = function()
+      local actions = require("telescope.actions")
+
+      local open_with_trouble = function(...)
+        return require("trouble.providers.telescope").open_with_trouble(...)
+      end
+      local open_selected_with_trouble = function(...)
+        return require("trouble.providers.telescope").open_selected_with_trouble(...)
+      end
+      local find_files_no_ignore = function()
+        local action_state = require("telescope.actions.state")
+        local line = action_state.get_current_line()
+        LazyVim.telescope("find_files", { no_ignore = true, default_text = line })()
+      end
+      local find_files_with_hidden = function()
+        local action_state = require("telescope.actions.state")
+        local line = action_state.get_current_line()
+        LazyVim.telescope("find_files", { hidden = true, default_text = line })()
+      end
+
+      return {
+        defaults = {
+          prompt_prefix = " ",
+          selection_caret = " ",
+          -- open files in the first window that is an actual file.
+          -- use the current window if no other window is available.
+          get_selection_window = function()
+            local wins = vim.api.nvim_list_wins()
+            table.insert(wins, 1, vim.api.nvim_get_current_win())
+            for _, win in ipairs(wins) do
+              local buf = vim.api.nvim_win_get_buf(win)
+              if vim.bo[buf].buftype == "" then
+                return win
+              end
+            end
+            return 0
+          end,
+          mappings = {
+            i = {
+              ["<a-t>"] = open_selected_with_trouble,
+              ["<a-i>"] = find_files_no_ignore,
+              ["<a-h>"] = find_files_with_hidden,
+              ["<C-Down>"] = actions.cycle_history_next,
+              ["<C-Up>"] = actions.cycle_history_prev,
+              ["<C-f>"] = actions.preview_scrolling_down,
+              ["<C-b>"] = actions.preview_scrolling_up,
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
+              ["<esc><esc>"] = actions.close,
+            },
+            n = {
+              ["q"] = actions.close,
+            },
+          },
+        },
+      }
+    end,
   },
 }
