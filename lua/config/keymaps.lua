@@ -35,7 +35,7 @@ vim.keymap.set("v", "<C-c>", ":%y+<CR>")
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- save
-vim.keymap.set("n", "<C-s>", ":w!<CR>")
+-- vim.keymap.set("n", "<C-s>", ":w!<CR>")
 
 -- buffer switching
 vim.keymap.set("n", "<C-h>", "<C-w>h")

@@ -6,3 +6,5 @@ local opt = vim.opt
 opt.scrolloff = 8
 opt.hlsearch = false
 opt.incsearch = true
+vim.g.miniindentscope_disable = true
+vim.g.noswapfile = true

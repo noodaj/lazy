@@ -6,6 +6,7 @@ return {
     { "<leader>ff", enabled = false },
     { "<leader>sS", enabled = false },
     { "<leader>ss", enabled = false },
+    { "<leader><leader>", enabled = false },
 
     -- start
     { "<leader>`", LazyVim.telescope("files", { cwd = false }), desc = "Find files" },
