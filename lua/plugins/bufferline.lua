@@ -14,4 +14,7 @@ return {
     { "<A-9>", "<cmd>BufferLineGoToBuffer 9<cr>", desc = "Goto Buffer 9" },
     { "<A-0>", "<cmd>BufferLineGoToBuffer -1<cr>", desc = "Goto Last Buffer" },
   },
+  opts = {
+    options = { indicator = { style = "underline" } },
+  },
 }

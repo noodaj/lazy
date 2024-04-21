@@ -1,5 +1,8 @@
 return {
   "lewis6991/gitsigns.nvim",
+  keys = {
+    { "]h", desc = "which_key_ignore" },
+  },
   opts = {
     signs = {
       add = { text = "│" },

@@ -2,33 +2,39 @@ return {
   "nvim-telescope/telescope.nvim",
   keys = {
     -- disabled keys
-    { "<leader>,", enabled = false },
-    { "<leader>ff", enabled = false },
-    { "<leader>sS", enabled = false },
-    { "<leader>ss", enabled = false },
-    { "<leader><leader>", enabled = false },
+    { "<leader>,", enabled = false, desc = "which_key_ignore" },
+    { "<leader>ff", enabled = false, desc = "which_key_ignore" },
+    { "<leader>sS", enabled = false, desc = "which_key_ignore" },
+    { "<leader>ss", enabled = false, desc = "which_key_ignore" },
+    { "<leader><leader>", enabled = false, desc = "which_key_ignore" },
+    { "<leader>fr", enabled = false, desc = "which_key_ignore" },
+    { "<leader>fR", enabled = false, desc = "which_key_ignore" },
+    { "<leader>:", enabled = false, desc = "which_key_ignore" },
+    { "<leader>fF", enabled = false, desc = "which_key_ignore" },
+    { "<leader>sC", enabled = false, desc = "which_key_ignore" },
+    { "<leader>sc", enabled = false, desc = "which_key_ignore" },
+    { "<leader>fe", enabled = false, desc = "which_key_ignore" },
+    { "<leader>fE", enabled = false, desc = "which_key_ignore" },
+    { "<leader>fC", enabled = false, desc = "which_key_ignore" },
+    { "<leader>fc", enabled = false, desc = "which_key_ignore" },
+    { "<leader>fn", enabled = false, desc = "which_key_ignore" },
 
     -- start
     { "<leader>`", LazyVim.telescope("files", { cwd = false }), desc = "Find files" },
     { "<leader>tr", "<cmd>Telescope resume<cr>", desc = "Resume search" },
-    { "<leader>/", LazyVim.telescope("live_grep"), desc = "Grep (Root Dir)" },
-    { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-    { "<leader>fF", LazyVim.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
     { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Find Files (git-files)" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-    { "<leader>fR", LazyVim.telescope("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
     -- git
     { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "Commits" },
     { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "Status" },
     -- search
     { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
-    { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-    { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
     { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document Diagnostics" },
     { "<leader>sD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace Diagnostics" },
+    { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
+    -- live grep
+    { "<leader>/", LazyVim.telescope("live_grep"), desc = "Grep (Root Dir)" },
     { "<leader>sg", LazyVim.telescope("live_grep"), desc = "Grep (Root Dir)" },
     { "<leader>sG", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
-    { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
     { "<leader>sw", LazyVim.telescope("grep_string", { word_match = "-w" }), desc = "Word (Root Dir)" },
     { "<leader>sW", LazyVim.telescope("grep_string", { cwd = false, word_match = "-w" }), desc = "Word (cwd)" },
     { "<leader>sw", LazyVim.telescope("grep_string"), mode = "v", desc = "Selection (Root Dir)" },
@@ -90,5 +96,8 @@ return {
         },
       }
     end,
+  },
+  opts = {
+    defaults = { file_ignore_patterns = { "node_modules", "cypress" } },
   },
 }
