@@ -6,13 +6,6 @@ return {
         ["<leader>f"] = { name = "+File search" },
         ["<leader>t"] = { name = "Telescope" },
         ["<leader>r"] = { name = "Replace word" },
-        -- ["y"] = { name = "+Surround", {
-        --   siw = { "Inner word" },
-        --   s" = {"Make surround word strings"},
-        -- } },
-        -- ["d"] = {{
-        --
-        -- }}
 
         --ignored
         ["<leader><tab>"] = { desc = "which_key_ignore" },
