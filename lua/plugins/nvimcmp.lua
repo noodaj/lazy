@@ -1,32 +1,54 @@
+local lsp_kinds = {
+  Text = { " ", "TSText" },
+  Function = { "", "TSFunction" },
+  Method = { " ", "TSMethod" },
+  Constructor = { "", "TSConstructor" },
+  Field = { "", "TSField" },
+  Variable = { "", " TSVariable" },
+  Class = { "", "TSClass" },
+  Interface = { "", "TSInterface" },
+  Module = { "", "TSModule" },
+  Property = { "", "TSProperty" },
+  Unit = { "", "TSUnit" },
+  Value = { " ", "TSValue" },
+  Enum = { "", "TSEnum" },
+  Keyword = { "", "TSKeyword" },
+  Snippet = { "", "TSSnippet" },
+  Color = { "", "TSColor" },
+  File = { "", "TSFile" },
+  Reference = { "", "TSReference" },
+  Folder = { "", "TSFolder" },
+  EnumMember = { "", "TSEnumMember" },
+  Constant = { "", "TSConstant" },
+  Struct = { "", "TSStruct" },
+  Event = { "", "TSEvent" },
+  Operator = { "", "TSOperator" },
+  TypeParameter = { "", "TSTypeParameter" },
+}
+
 return {
   {
-    "L3MON4D3/LuaSnip",
-    keys = function()
-      return {}
-    end,
-  },
-  -- then: setup supertab in cmp
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-emoji",
-    },
-    ---@param opts cmp.ConfigSchema
+    "hrsh8th/nvim-cmp",
     opts = function(_, opts)
-      local has_words_before = function()
-        unpack = unpack or table.unpack
-        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-      end
-
-      local luasnip = require("luasnip")
       local cmp = require("cmp")
 
-      opts.mapping = vim.tbl_extend("force", opts.mapping, {
-        ["<CR>"] = cmp.config.disable,
-        ["<Tab>"] = cmp.mapping.confirm({ select = true }),
-        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+      cmp.setup({
+        formatting = {
+          fields = { "kind", "abbr", "menu" },
+          format = function(_, vim_item)
+            vim_item.kind = lsp_kinds[vim_item.kind][1]
+            print("Icon: ", lsp_kinds[vim_item.kind][1])
+            return vim_item
+          end,
+          expandable_indicator = true,
+        },
+
+        mapping = {
+          ["<CR>"] = cmp.config.disable,
+          ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+          ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+          ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+        },
       })
     end,
   },
