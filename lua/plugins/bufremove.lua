@@ -8,7 +8,6 @@ return {
     { "<leader>bl", enabled = false, desc = "which_key_ignore" },
     { "<leader>bo", enabled = false, desc = "which_key_ignore" },
     { "<leader>bP", enabled = false, desc = "which_key_ignore" },
-
     {
       "<A-w>",
       function()

@@ -2,7 +2,6 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "night-owl",
       icons = {
         kinds = {
           Text = " ",
