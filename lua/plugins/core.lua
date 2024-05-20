@@ -2,6 +2,15 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
+      misc = {
+        dots = "",
+      },
+      diagnostics = {
+        Error = "",
+        Warn = "",
+        Info = "",
+        Hint = "",
+      },
       icons = {
         kinds = {
           Text = " ",
