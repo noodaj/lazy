@@ -43,4 +43,3 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 -- center after jumping files
 vim.keymap.set("n", "<C-o>", "<C-o>zz", { desc = "Center previous spot" })
 
--- vim.keymap.del("<leader>`")

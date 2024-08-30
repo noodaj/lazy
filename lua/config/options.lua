@@ -8,3 +8,4 @@ opt.hlsearch = false
 opt.swapfile = false
 opt.incsearch = true
 vim.g.miniindentscope_disable = true
+vim.g.setclipboard = "unnamedplus"

@@ -1,13 +1,13 @@
 return {
   "echasnovski/mini.bufremove",
   keys = {
-    { "<leader>bb", enabled = false, desc = "which_key_ignore" },
-    { "<leader>bd", enabled = false, desc = "which_key_ignore" },
-    { "<leader>bD", enabled = false, desc = "which_key_ignore" },
-    { "<leader>be", enabled = false, desc = "which_key_ignore" },
-    { "<leader>bl", enabled = false, desc = "which_key_ignore" },
-    { "<leader>bo", enabled = false, desc = "which_key_ignore" },
-    { "<leader>bP", enabled = false, desc = "which_key_ignore" },
+    { "<leader>bb", enabled = false },
+    { "<leader>bd", enabled = false },
+    { "<leader>bD", enabled = false },
+    { "<leader>be", enabled = false },
+    { "<leader>bl", enabled = false },
+    { "<leader>bo", enabled = false },
+    { "<leader>bP", enabled = false },
     {
       "<A-w>",
       function()

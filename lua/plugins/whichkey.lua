@@ -2,21 +2,22 @@ return {
   {
     "folke/which-key.nvim",
     opts = {
-      defaults = {
-        ["<leader>f"] = { name = "+File search" },
-        ["<leader>t"] = { name = "Telescope" },
-        ["<leader>r"] = { name = "Replace word" },
-
-        --ignored
-        ["<leader><tab>"] = { desc = "which_key_ignore" },
-        ["<leader>K"] = { desc = "which_key_ignore" },
-        ["<leader>y"] = { desc = "which_key_ignore" },
-        ["<leader>b"] = { desc = "which_key_ignore" },
-        ["<leader>L"] = { desc = "which_key_ignore" },
-        ["]"] = { desc = "which_key_ignore" },
-        ["["] = { desc = "which_key_ignore" },
-        ["<C-F>"] = { desc = "which_key_ignore" },
-        ["<C-B>"] = { desc = "which_key_ignore" },
+      spec = {
+        {
+          mode = { "n", "v" },
+          { "<leader>f", group = "+File search" },
+          { "<leader>t", group = "Telescope" },
+          { "<leader>r", group = "Replace word" },
+          { "<leader><tab>", hidden = true },
+          { "<leader>K", hidden = true },
+          { "<leader>y", hidden = true },
+          { "<leader>b", hidden = true },
+          { "<leader>L", hidden = true },
+          { "]", hidden = true },
+          { "[", hidden = true },
+          { "<C-F>", hidden = true },
+          { "<C-B>", hidden = true },
+        },
       },
     },
   },
