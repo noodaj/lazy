@@ -2,15 +2,9 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
---moving lines
-vim.keymap.set("v", "<C-J>", ":m '>+1<CR>gv=gv", { desc = "Move lines down visual" })
-vim.keymap.set("v", "<C-K>", ":m '<-2<CR>gv=gv", { desc = "Move lines up visual" })
-vim.keymap.set("n", "<C-J>", ":m '>+1<CR>gv=gv", { desc = "Move lines down" })
-vim.keymap.set("n", "<C-K>", ":m '<-2<CR>gv=gv", { desc = "Move lines up" })
-
 -- movement centering NORMAL
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Center half page down" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Center half page up" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Center half page down" })
 vim.keymap.set("n", "n", "nzz", { desc = "Center next" })
 vim.keymap.set("n", "N", "Nzz", { desc = "Center prev" })
 
@@ -42,4 +36,3 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
 -- center after jumping files
 vim.keymap.set("n", "<C-o>", "<C-o>zz", { desc = "Center previous spot" })
-

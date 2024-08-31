@@ -3,33 +3,16 @@ return {
   opts = {
     -- make sure mason installs the server
     servers = {
-      ---@type lspconfig.options.tsserver
-      tsserver = {
+      vtsls = {
         keys = {
           {
             "<leader>co",
-            function()
-              vim.lsp.buf.code_action({
-                apply = true,
-                context = {
-                  only = { "source.organizeImports.ts" },
-                  diagnostics = {},
-                },
-              })
-            end,
+            LazyVim.lsp.action["source.organizeImports"],
             desc = "Organize Imports",
           },
           {
-            "<leader>cR",
-            function()
-              vim.lsp.buf.code_action({
-                apply = true,
-                context = {
-                  only = { "source.removeUnused.ts" },
-                  diagnostics = {},
-                },
-              })
-            end,
+            "<leader>cu",
+            LazyVim.lsp.action["source.removeUnusedImports"],
             desc = "Remove Unused Imports",
           },
         },
